@@ -1,0 +1,20 @@
+<%= form_for @filter_rule, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :contains, "Afzender email", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :contains, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :budget_code_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select(:budget_code_id, BudgetCode.all, :id, :name, :prompt => "Selecteer") %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                filter_rules_path, :class => 'btn' %>
+  </div>
+<% end %>

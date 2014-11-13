@@ -1,4 +1,10 @@
 YukiB::Application.routes.draw do
+  resources :budget_codes
+
+
+  resources :filter_rules
+
+
   resources :invoices
 
 

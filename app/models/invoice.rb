@@ -20,5 +20,4 @@ class Invoice < ActiveRecord::Base
 			Ticket.create! title: e.message, body: e.backtrace.inspect
 		end
 	end
-
 end

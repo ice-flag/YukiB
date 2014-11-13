@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141113162313) do
+ActiveRecord::Schema.define(:version => 20141113210715) do
+
+  create_table "budget_codes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "filter_rules", :force => true do |t|
+    t.string   "contains"
+    t.integer  "budget_code_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
 
   create_table "invoices", :force => true do |t|
     t.string   "title"

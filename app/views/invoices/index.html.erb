@@ -25,8 +25,14 @@
       <tr>
         <td><%= link_to invoice.id, invoice_path(invoice) %></td>
         <td><%= link_to invoice.title, invoice_path(invoice) %></td>
+        <% if FilterRule.where(:contains => invoice.from.to_s).present? %>
+          <% FilterRule.where(:contains => invoice.from.to_s).each do |fr| %>
+            <td style="color:green;"><%= BudgetCode.find(fr.budget_code_id).name %></td>
+          <% end %>
+        <% else %>
+          <td><%= invoice.from %></td>
+        <% end %>
         <td><%= invoice.receiver %></td>
-        <td><%= invoice.from %></td>
         <td>LK</td>
         <td><%= invoice.created_at.strftime("%d %B %Y om %H:%M") unless invoice.created_at.nil? %></td>
         <td>
